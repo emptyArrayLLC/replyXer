@@ -21,7 +21,7 @@ A fork of **[lucahammer/tweetXer](https://github.com/lucahammer/tweetXer)** with
 - ✅ Unfollow everyone (handles rate limits)
 - ✅ Resume interrupted deletions
 - ✅ Works on desktop, Android, and iOS
-- ✅ Install as a userscript (Tampermonkey / Violentmonkey / FireMonkey) or paste into console
+- ✅ Install as a userscript **or** run directly from browser DevTools
 
 ## Installation & Usage
 
@@ -36,8 +36,75 @@ A fork of **[lucahammer/tweetXer](https://github.com/lucahammer/tweetXer)** with
 
 ### 2. Run replyXer
 
-**Option A: Userscript (recommended)**
-- Install [Tampermonkey](https://www.tampermonkey.net/), [Violentmonkey](https://violentmonkey.github.io/), or [FireMonkey](https://addons.mozilla.org/firefox/addon/firemonkey/) 
-- Add the script directly from this repo:
-  ```js
-  https://raw.githubusercontent.com/emptyArrayLLC/replyXer/main/replyXer.js
+#### Option A: Userscript (recommended for repeated use)
+- Install [Tampermonkey](https://www.tampermonkey.net/), [Violentmonkey](https://violentmonkey.github.io/), or [FireMonkey](https://addons.mozilla.org/firefox/addon/firemonkey/)
+- Add the script directly from this repo:  
+  `https://raw.githubusercontent.com/emptyArrayLLC/replyXer/main/replyXer.js`
+
+#### Option B: Browser Console (no extensions needed – fastest for one-time use)
+This method takes about 30 seconds once you have your data files.
+
+1. **Log into X**  
+   Open your browser and go to [https://x.com](https://x.com) (or twitter.com). Make sure you are **logged in** with the account you want to clean up.
+
+2. **Open DevTools**  
+   - **Windows / Linux**: Press `F12` or `Ctrl` + `Shift` + `I`  
+   - **Mac**: Press `Cmd` + `Option` + `I`  
+   - Or right-click anywhere on the page → **Inspect** → go to the **Console** tab.
+
+3. **Clear the console** (recommended)  
+   Click the **🗑️** (clear) button at the top-left of the console, or just type `clear()` and press Enter.
+
+4. **Copy the full script**  
+   Open this link in a **new tab**:  
+   [https://raw.githubusercontent.com/emptyArrayLLC/replyXer/main/replyXer.js](https://raw.githubusercontent.com/emptyArrayLLC/replyXer/main/replyXer.js)  
+   - Press `Ctrl` + `A` (Windows/Linux) or `Cmd` + `A` (Mac) to select everything.  
+   - Press `Ctrl` + `C` / `Cmd` + `C` to copy the entire script.
+
+5. **Paste and run**  
+   Go back to the X tab where DevTools is open.  
+   Paste the entire script into the console (right-click → Paste or `Ctrl` + `V` / `Cmd` + `V`).  
+   Press **Enter**.  
+
+   A light-blue control panel will appear at the top of the page.
+
+### 3. Delete your content
+- Click **Choose File** and select your data file (e.g. `tweets.js`)
+- **For tweets.js only**: Check the new **"Replies only"** box if you want to delete just replies
+- (Optional) Use the advanced options to skip already-deleted items or start from scratch
+- Click **Delete** and wait — the script deletes ~5–10 items per second
+
+## Mobile Support
+
+### Android
+1. Install Firefox + Tampermonkey
+2. Add the userscript from the raw URL above
+3. Open x.com in Firefox
+
+### iOS
+1. Install the **Userscripts** Safari extension
+2. Add the script using the remote URL above
+3. Visit x.com in Safari
+
+## Advanced Options
+- **Skip count** — resume a previous run
+- **Slow mode** — delete without data export
+- **Export bookmarks** — downloads all your bookmarks as JSON
+- **Unfollow everyone** — removes all follows (may need multiple runs due to rate limits)
+
+## Known Limitations
+- Likes older than ~3,200 cannot be bulk-deleted (X limitation)
+- Some hidden retweets from banned accounts may remain
+- Very large archives (>15k tweets) may cause browser slowdowns — close the console after starting
+
+## License
+This project is a fork of [tweetXer](https://github.com/lucahammer/tweetXer) and is released under the same **GPL-3.0** license (see [LICENSE](LICENSE)).
+
+## Credits
+- Original **tweetXer** by [lucahammer](https://github.com/lucahammer/tweetXer)
+- Reply-only mode & maintenance by [emptyArrayLLC](https://github.com/emptyArrayLLC)
+
+---
+
+Made with ❤️ for people who want to reclaim their digital footprint.  
+Star the repo if it helped you! ⭐
